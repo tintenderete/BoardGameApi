@@ -16,7 +16,7 @@ namespace BoardGameApi
 
             /// Actor
 
-            //Piece piece = new Piece(Piece.colors.White);
+           // Piece piece = new Piece(Piece.colors.White);
 
 
         }
