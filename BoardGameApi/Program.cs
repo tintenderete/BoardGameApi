@@ -14,9 +14,8 @@ namespace BoardGameApi
         static void Main(string[] args)
         {
 
-            /// Actor
+            
 
-           // Piece piece = new Piece(Piece.colors.White);
 
 
         }
