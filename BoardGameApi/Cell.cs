@@ -43,5 +43,14 @@ namespace BoardGameApi
         {
             this.currentPiece = new NoPiece();
         }
+
+        public bool IsEmpty()
+        {
+            if (currentPiece.Get_type() == (int)Piece.colors.NoPiece)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
