@@ -14,13 +14,14 @@ namespace BoardGameApi
 
         public Piece()
         {
-            
+            this.type = (int)Actor.types.Piece;
         }
 
         public Piece(int color, List<Position> basicMovement)
         {
             this.color = color;
             this.basicMovement = basicMovement;
+            this.type = (int)Actor.types.Piece;
         }
 
         public int GetColor()

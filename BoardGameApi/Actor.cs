@@ -12,7 +12,7 @@ namespace BoardGameApi
 
         public enum types { Cell, Piece };
 
-        private int type;
+        protected int type;
 
         private int id;
 
