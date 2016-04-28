@@ -9,7 +9,7 @@ namespace BoardGameApi
     class Cell: Actor
     {
 
-        protected int[] boardPosition;
+        protected Position boardPosition;
         protected Piece currentPiece;
 
         public Cell()
@@ -17,13 +17,13 @@ namespace BoardGameApi
 
         }
 
-        public Cell(int[] boardPosition, Piece piece)
+        public Cell(Position boardPosition, Piece piece)
         {
             this.boardPosition = boardPosition;
             this.currentPiece = piece;
         }
 
-        public int[] GetBoardPosition()
+        public Position GetBoardPosition()
         {
             return boardPosition;
         }
