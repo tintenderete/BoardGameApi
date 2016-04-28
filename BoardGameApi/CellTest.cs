@@ -58,5 +58,16 @@ namespace BoardGameApi
             return true;
         }
 
+        public bool isEmpty_test()
+        {
+            if (cell.IsEmpty())
+            {
+                Console.WriteLine("result incorrect");
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }

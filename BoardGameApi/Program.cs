@@ -70,6 +70,11 @@ namespace BoardGameApi
                 Console.WriteLine("has to be a cell");
             }
 
+            if (!cellTest.isEmpty_test())
+            {
+                Console.WriteLine("empty method failed");
+            }
+
 
             Console.WriteLine("test finished");
             Console.ReadKey();
