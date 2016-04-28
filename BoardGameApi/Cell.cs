@@ -14,13 +14,14 @@ namespace BoardGameApi
 
         public Cell()
         {
-
+            this.type = (int)Actor.types.Cell;
         }
 
         public Cell(Position boardPosition, Piece piece)
         {
             this.boardPosition = boardPosition;
             this.currentPiece = piece;
+            this.type = (int)Actor.types.Cell;
         }
 
         public Position GetBoardPosition()
