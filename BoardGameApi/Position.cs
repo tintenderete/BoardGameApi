@@ -9,6 +9,12 @@ namespace BoardGameApi
     public class Position
     {
         public int horizontal;
-        public int vertical; 
+        public int vertical;
+
+        public Position(int horizontal, int vertical)
+        {
+            this.horizontal = horizontal;
+            this.vertical = vertical;
+        }
     }
 }
