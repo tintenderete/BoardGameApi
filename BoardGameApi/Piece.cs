@@ -10,14 +10,14 @@ namespace BoardGameApi
     {
         public enum colors {NoPiece, White, Black };
         protected int color;
-        protected List<int[]> basicMovement;
+        protected List<Position> basicMovement;
 
         public Piece()
         {
             
         }
 
-        public Piece(int color, List<int[]> basicMovement)
+        public Piece(int color, List<Position> basicMovement)
         {
             this.color = color;
             this.basicMovement = basicMovement;
@@ -28,7 +28,7 @@ namespace BoardGameApi
             return color;
         }
 
-        public List<int[]> GetBasicMovement()
+        public List<Position> GetBasicMovement()
         {
             return basicMovement;
         }
