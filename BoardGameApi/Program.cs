@@ -13,20 +13,27 @@ namespace BoardGameApi
         
         static void Main(string[] args)
         {
-            // Piece
-            List<Position> PieceMovements = new List<Position>();
-            PieceMovements[0] = new Position(1, 0);
-            PieceMovements[1] = new Position(-1, 0);
-            PieceMovements[2] = new Position(0, 1);
-            PieceMovements[3] = new Position(0, -1);
+           
+            ActorTest actorTest = new ActorTest();
 
-            Piece whitePiece = new Piece((int)Piece.colors.White, PieceMovements);
-            Piece noPiece = new Piece((int)Piece.colors.White, new List<Position>());
+            if (!actorTest.idCorrect())
+            {
+                Console.WriteLine("Actor id no correct"); 
+            }
 
-            
+            if (!actorTest.idDiferent())
+            {
+                Console.WriteLine("Actor id is repited");
+            }
+
+            if (!actorTest.idCountGotMax())
+            {
+                Console.WriteLine("Actor idCount dosent count well");
+            }
 
 
-
+            Console.WriteLine("test finished");
+            Console.ReadKey();
         }
         
     }
