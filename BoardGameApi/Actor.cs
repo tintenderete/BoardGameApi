@@ -9,18 +9,12 @@ namespace BoardGameApi
     public abstract class Actor
     {
         static int idCount = 0;
+        public enum types { Cell, Piece };
+        protected int type;
+        private int id;
 
         public static int GetCount() { return idCount; }
-        public static void ResetCount() {idCount = 0; }
-
-
-        static void ResetIdCount() { idCount = 0; }
-
-        public enum types { Cell, Piece };
-
-        protected int type;
-
-        private int id;
+        public static void ResetCount() { idCount = 0; }
 
         public Actor()
         {
