@@ -75,6 +75,42 @@ namespace BoardGameApi
                 Console.WriteLine("empty method failed");
             }
 
+            BoardTest boardTest = new BoardTest();
+
+            if(!boardTest.GetBoard_Test())
+            {
+                Console.WriteLine("board table incorrect");
+            }
+
+            if(!boardTest.GetCellByPosition_test())
+            {
+                Console.WriteLine("Get cell by position fail");
+            }
+
+            if (!boardTest.GetCellByPiece_test())
+            {
+                Console.WriteLine("Get cell by piece fail");
+            }
+
+            if (!boardTest.GetPieceByPosition_test())
+            {
+                Console.WriteLine("Get piece by position fail");
+            }
+
+            if (!boardTest.GetPieceByCell_test())
+            {
+                Console.WriteLine("Get piece by cell fail");
+            }
+
+            if (!boardTest.MovePiece_test())
+            {
+                Console.WriteLine("move piece test failed");
+            }
+
+            if (!boardTest.MovePiece_test2())
+            {
+                Console.WriteLine("move piece test 2 failed");
+            }
 
             Console.WriteLine("test finished");
             Console.ReadKey();
