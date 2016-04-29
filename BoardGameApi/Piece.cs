@@ -12,12 +12,12 @@ namespace BoardGameApi
         protected int color;
         protected List<Position> basicMovement;
 
-        public Piece()
+        public Piece(): base()
         {
             this.type = (int)Actor.types.Piece;
         }
 
-        public Piece(int color, List<Position> basicMovement)
+        public Piece(int color, List<Position> basicMovement): base()
         {
             this.color = color;
             this.basicMovement = basicMovement;
