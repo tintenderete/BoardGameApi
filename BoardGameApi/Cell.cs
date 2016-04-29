@@ -9,21 +9,22 @@ namespace BoardGameApi
     class Cell: Actor
     {
 
-        protected int[] boardPosition;
+        protected Position boardPosition;
         protected Piece currentPiece;
 
         public Cell()
         {
-
+            this.type = (int)Actor.types.Cell;
         }
 
-        public Cell(int[] boardPosition, Piece piece)
+        public Cell(Position boardPosition, Piece piece)
         {
             this.boardPosition = boardPosition;
             this.currentPiece = piece;
+            this.type = (int)Actor.types.Cell;
         }
 
-        public int[] GetBoardPosition()
+        public Position GetBoardPosition()
         {
             return boardPosition;
         }
@@ -41,6 +42,15 @@ namespace BoardGameApi
         public void SetEmptyCell()
         {
             this.currentPiece = new NoPiece();
+        }
+
+        public bool IsEmpty()
+        {
+            if (currentPiece.Get_type() == (int)Piece.colors.NoPiece)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
