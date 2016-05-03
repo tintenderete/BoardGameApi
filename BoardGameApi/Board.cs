@@ -9,6 +9,7 @@ namespace BoardGameApi
     class Board
     {
         protected Cell[,] board = new Cell[1,1];
+        private Position size;
 
         public Board()
         {
@@ -81,6 +82,11 @@ namespace BoardGameApi
         {
             destiny.SetPiece(origin.GetPiece());
             origin.SetEmptyCell();
+        }
+
+        public Position GetSize()
+        {
+            return size;
         }
 
     }

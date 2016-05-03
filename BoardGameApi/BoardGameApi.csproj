@@ -46,11 +46,16 @@
     <Compile Include="Actor.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="Movement.cs" />
     <Compile Include="NoPiece.cs" />
     <Compile Include="Piece.cs" />
+    <Compile Include="PiecesToMove.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Step.cs" />
+    <Compile Include="TurnManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
