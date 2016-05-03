@@ -17,12 +17,12 @@ namespace BoardGameApi
 
         public abstract bool Update();
 
-        protected List<Step> GetSteps()
+        public List<Step> GetSteps()
         {
             return turnManager.GetSteps();
         }
 
-        protected Step GetStep(int listPos)
+        public Step GetStep(int listPos)
         {
             return turnManager.GetStep(listPos);
         }
