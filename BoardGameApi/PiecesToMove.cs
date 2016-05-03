@@ -26,7 +26,7 @@ namespace BoardGameApi
         {
             
         }
-        protected void BasicMovementsAvailable()
+        public void BasicMovementsAvailable()
         {
             movements.Clear();
 
@@ -48,7 +48,7 @@ namespace BoardGameApi
             }
         }
 
-        protected bool IsPlayerPiece(Cell cell)
+        public bool IsPlayerPiece(Cell cell)
         {
             int currentPlayerColor = currentPlayer.GetColor();
             int pieceColor = cell.GetPiece().GetColor();
@@ -65,7 +65,7 @@ namespace BoardGameApi
 
 
 
-        protected List<Cell> NextCells(Cell cell, List<Position> movementsSkill)
+        public List<Cell> NextCells(Cell cell, List<Position> movementsSkill)
         {
             List<Cell> nextCells = new List<Cell>();    
 
@@ -90,7 +90,7 @@ namespace BoardGameApi
             return nextCells;
         }
 
-        protected Position NextPosition(Position currentPos, Position movementSkill)
+        public Position NextPosition(Position currentPos, Position movementSkill)
         {
             Position newPosition;
 
@@ -102,7 +102,7 @@ namespace BoardGameApi
             return newPosition;
         }
 
-        protected Cell NextCell(Position newPos)
+        public Cell NextCell(Position newPos)
         {
             
             Cell newCell;
@@ -112,9 +112,9 @@ namespace BoardGameApi
             return newCell;
         }
 
-        
 
-        protected bool IsPosOnTheBoard(Position position)
+
+        public bool IsPosOnTheBoard(Position position)
         {
             int sizeV = board.GetSize().vertical;
             int sizeH =  board.GetSize().horizontal;
