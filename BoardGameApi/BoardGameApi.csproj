@@ -46,6 +46,7 @@
     <Compile Include="Actor.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="BoardEditor.cs" />
+    <Compile Include="BoardEditor_Test.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="Movement.cs" />
     <Compile Include="NoPiece.cs" />

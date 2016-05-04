@@ -22,6 +22,16 @@ namespace BoardGameApi
                 Console.WriteLine("Turn Manager is not update");
             }
 
+
+            BoardEditor_Test boardEditor_test = new BoardEditor_Test();
+
+            if (!boardEditor_test.ArePiecesInCorrectCell())
+            {
+                Console.WriteLine("Pieces in correct cell: failed");
+            }
+
+
+
             Console.WriteLine("Test finished");
             Console.ReadKey();
         }
