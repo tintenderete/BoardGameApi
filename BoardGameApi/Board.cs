@@ -8,7 +8,7 @@ namespace BoardGameApi
 {
     class Board
     {
-        protected Cell[,] board = new Cell[1,1];
+        protected Cell[,] boardTable = new Cell[1,1];
         private Position size;
 
         public Board()
@@ -16,21 +16,23 @@ namespace BoardGameApi
 
         }
 
-        public Board(Cell[,] board)
+        public Board(Cell[,] board, int HorizontalSize, int VerticalSize)
         {
-            this.board = board;
+            this.boardTable = board;
+            size.horizontal = HorizontalSize;
+            size.vertical = VerticalSize;
         }
 
         public Cell[,] GetBoard()
         {
-            return board;
+            return boardTable;
         }
 
         public Cell GetCell(int boardPosV, int boardPosH)
         {
             Cell cellToReturn;
 
-            cellToReturn = board[boardPosV, boardPosH];
+            cellToReturn = boardTable[boardPosV, boardPosH];
 
             return cellToReturn;   
         }
@@ -39,7 +41,7 @@ namespace BoardGameApi
         {
             int pieceId = piece.GetId();
             int pieceId_i;
-            foreach (Cell cell in board)
+            foreach (Cell cell in boardTable)
             {
                 pieceId_i = cell.GetPiece().GetId();
                 if (pieceId == pieceId_i)
