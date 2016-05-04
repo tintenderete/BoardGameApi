@@ -45,10 +45,12 @@
   <ItemGroup>
     <Compile Include="Actor.cs" />
     <Compile Include="Board.cs" />
+    <Compile Include="BoardEditor.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="Movement.cs" />
     <Compile Include="NoPiece.cs" />
     <Compile Include="Piece.cs" />
+    <Compile Include="PieceFactory.cs" />
     <Compile Include="PiecesToMove.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />

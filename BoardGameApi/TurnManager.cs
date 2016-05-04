@@ -14,6 +14,7 @@ namespace BoardGameApi
         public TurnManager()
         {
             this.currentStep = 0;
+            steps = new List<Step>();
             Step.NewTurnManager(this);
         }
 
