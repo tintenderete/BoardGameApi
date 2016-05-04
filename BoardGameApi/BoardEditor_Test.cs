@@ -10,6 +10,7 @@ namespace BoardGameApi
     {
         BoardTableEditor editor;
         Board board;
+
         public BoardEditor_Test()
         {
             editor = new BoardTableEditor(3, 3);
