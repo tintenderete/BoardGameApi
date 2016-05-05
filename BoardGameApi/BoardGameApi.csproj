@@ -55,6 +55,7 @@
     <Compile Include="NoPiece.cs" />
     <Compile Include="Piece.cs" />
     <Compile Include="PiecesToMove.cs" />
+    <Compile Include="PiecesToMove_test.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
