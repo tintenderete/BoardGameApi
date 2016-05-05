@@ -10,7 +10,7 @@ namespace BoardGameApi
     {
 
         protected Position boardPosition;
-        protected Piece currentPiece = new Piece((int)Piece.colors.NoPiece, new List<Position>());
+        protected Piece currentPiece;
 
         public Cell()
         {

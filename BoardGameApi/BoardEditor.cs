@@ -26,6 +26,7 @@ namespace BoardGameApi
         {
             Cell[,] boardTable = new Cell[HorizontalSize, VerticalSize];
             board = new Board(boardTable, HorizontalSize, VerticalSize);
+            PushAllNoPieces(board);
         }
 
         public Board GetBoard()
@@ -76,6 +77,16 @@ namespace BoardGameApi
                 return true;
             }
             return false;
+        }
+
+        private void PushAllNoPieces(Board board)
+        {
+            Cell[,] boardTable = board.GetBoard();
+            
+            foreach (Cell cell in boardTable)
+            {
+                cell.SetPiece(pieceFactory.MakePiece((int)PieceFactory.names.NoPiece));
+            }
         }
 
 
