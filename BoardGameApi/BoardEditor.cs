@@ -82,10 +82,14 @@ namespace BoardGameApi
         private void PushAllNoPieces(Board board)
         {
             Cell[,] boardTable = board.GetBoard();
+            Position size = board.GetSize();
             
-            foreach (Cell cell in boardTable)
+            for (int v = 0; v < size.vertical; v++)
             {
-                cell.SetPiece(pieceFactory.MakePiece((int)PieceFactory.names.NoPiece));
+                for (int h = 0; h < size.horizontal; h++)
+                {
+                    boardTable[h, v] = new Cell(new Position(h, v), pieceFactory.MakePiece(0));
+                }
             }
         }
 
