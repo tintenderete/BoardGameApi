@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace BoardGameApi
 {
-    class PiecesToMove: Step
+    class PiecesToMove
     {
         public List<Movement> movements;
         private Board board;
         private Player currentPlayer;
 
-        public override bool Update()
-        {
-            throw new NotImplementedException();
-        }
-
+ 
         public PiecesToMove(Board board, Player currentPlayer)
         {
             this.board = board;
             this.currentPlayer = currentPlayer;
+            this.movements = new List<Movement>();
+        }
+        public PiecesToMove(Board board)
+        {
+            this.board = board;
         }
         public PiecesToMove()
         {
@@ -102,15 +103,7 @@ namespace BoardGameApi
             return newPosition;
         }
 
-        public Cell NextCell(Position newPos)
-        {
-            
-            Cell newCell;
-
-            newCell = board.GetCell(newPos.vertical, newPos.horizontal);
-          
-            return newCell;
-        }
+       
 
 
 
@@ -132,8 +125,18 @@ namespace BoardGameApi
 
             return true;
         }
-        
-        
+
+        private Cell NextCell(Position newPos)
+        {
+
+            Cell newCell;
+
+            newCell = board.GetCell(newPos.vertical, newPos.horizontal);
+
+            return newCell;
+        }
+
+
 
 
     }

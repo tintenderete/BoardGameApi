@@ -9,7 +9,7 @@ namespace BoardGameApi
     class Board
     {
         protected Cell[,] boardTable = new Cell[1,1];
-        private Position size = new Position(1,1);
+        protected Position size = new Position(1,1);
 
         public Board()
         {

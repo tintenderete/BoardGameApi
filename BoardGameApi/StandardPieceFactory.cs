@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BoardGameApi
 {
-    class PieceFactory
+    class StandardPieceFactory: IPieceFactory
     {
-        public enum names {NoPiece, standard_White, standard_Black };
+        public enum names { NoPiece, standard_White, standard_Black };
 
         public Piece MakePiece(int pieceName)
         {
@@ -41,7 +41,7 @@ namespace BoardGameApi
             return new Piece((int)Piece.colors.NoPiece, movementSkill);
 
 
-            
+
         }
     }
 }

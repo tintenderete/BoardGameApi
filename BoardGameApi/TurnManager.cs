@@ -6,48 +6,56 @@ using System.Threading.Tasks;
 
 namespace BoardGameApi
 {
-    class TurnManager
+    public class TurnManager
     {
-        private List<Step> steps;
+        private List<IStep> steps;
         private int currentStep;
+        private Game game;
 
-        public TurnManager()
+        public TurnManager(Game newGame)
         {
             this.currentStep = 0;
-            steps = new List<Step>();
-            Step.NewTurnManager(this);
+            steps = new List<IStep>();
+            game = newGame;
         }
 
-        public void AddStep(Step step)
+        public void AddStep(IStep step)
         {
             steps.Add(step);
         }
 
         public void Update()
         {
-            if (steps[currentStep].Update())
-            {
-                NextStep();
-            }
+            steps[currentStep].UpdateStep(this);  
         }
 
-        public List<Step> GetSteps()
+        public List<IStep> GetSteps()
         {
             return this.steps;
         }
 
-        public Step GetStep(int listPos)
+        public IStep GetStep(int listPos)
         {
             return steps[listPos];
         }
 
-        private void NextStep()
+        public void NextStep()
         {
             currentStep++;
             if (currentStep > steps.Capacity)
             {
                 currentStep = 0;
             }
+        }
+
+        public void NextStep(int nextStep)
+        {
+            currentStep = nextStep;
+        }
+
+        public int GetCurrentStep()
+        {
+            return currentStep;
         }
     }
 }

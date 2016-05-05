@@ -10,7 +10,7 @@ namespace BoardGameApi
     {
         Board board;
         int pointer;
-        PieceFactory pieceFactory = new PieceFactory();
+        IPieceFactory pieceFactory;
         int[] pushCount; 
 
         public BoardTableEditor()
@@ -18,14 +18,17 @@ namespace BoardGameApi
             board = new Board(); 
         }
 
-        public BoardTableEditor(int HorizontalSize, int VerticalSize)
+        public BoardTableEditor(int HorizontalSize, int VerticalSize, IPieceFactory newPieceFactory)
         {
             NewBoard(HorizontalSize, VerticalSize);
+
             pushCount = new int[VerticalSize];
             for (int i = 0; i < VerticalSize; i++)
             {
                 pushCount[i] = 0;
             }
+
+            this.pieceFactory = newPieceFactory; 
         }
 
         public void NewBoard(int HorizontalSize, int VerticalSize)
@@ -90,6 +93,7 @@ namespace BoardGameApi
 
         private void PushAllNoPieces(Board board)
         {
+            pieceFactory = new StandardPieceFactory();
             Cell[,] boardTable = board.GetBoard();
             Position size = board.GetSize();
             
