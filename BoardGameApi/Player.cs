@@ -8,7 +8,7 @@ namespace BoardGameApi
 {
     class Player
     {
-        public enum colors {White, Black};
+        public enum colors {NoPiece, White, Black};
 
         private static List<Actor> inputs;
 
