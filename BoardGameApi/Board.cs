@@ -28,11 +28,11 @@ namespace BoardGameApi
             return boardTable;
         }
 
-        public Cell GetCell(int boardPosV, int boardPosH)
+        public Cell GetCell(int boardPosH, int boardPosV)
         {
             Cell cellToReturn;
 
-            cellToReturn = boardTable[boardPosV, boardPosH];
+            cellToReturn = boardTable[boardPosH, boardPosV];
 
             return cellToReturn;   
         }
@@ -53,12 +53,12 @@ namespace BoardGameApi
             return new Cell();
         }
 
-        public Piece GetPiece(int boardPosV, int boardPosH)
+        public Piece GetPiece(int boardPosH, int boardPosV)
         {
             Piece pieceToreturn;
             Cell cellContainer;
 
-            cellContainer = GetCell(boardPosV, boardPosH);
+            cellContainer = GetCell(boardPosH, boardPosV);
 
             pieceToreturn = cellContainer.GetPiece();
 
@@ -73,7 +73,7 @@ namespace BoardGameApi
 
             cellBoardPos = cell.GetBoardPosition();
 
-            cellContainer = GetCell(cellBoardPos.vertical, cellBoardPos.horizontal);
+            cellContainer = GetCell(cellBoardPos.horizontal, cellBoardPos.vertical);
 
             pieceToreturn = cellContainer.GetPiece();
 
