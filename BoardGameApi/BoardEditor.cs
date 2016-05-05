@@ -11,6 +11,7 @@ namespace BoardGameApi
         Board board;
         int pointer;
         PieceFactory pieceFactory = new PieceFactory();
+        int[] pushCount; 
 
         public BoardTableEditor()
         {
@@ -20,6 +21,11 @@ namespace BoardGameApi
         public BoardTableEditor(int HorizontalSize, int VerticalSize)
         {
             NewBoard(HorizontalSize, VerticalSize);
+            pushCount = new int[VerticalSize];
+            for (int i = 0; i < VerticalSize; i++)
+            {
+                pushCount[i] = 0;
+            }
         }
 
         public void NewBoard(int HorizontalSize, int VerticalSize)
@@ -33,6 +39,10 @@ namespace BoardGameApi
         {
             return board;
         }
+        public int GetPointer()
+        {
+            return pointer;
+        }
 
         public void SetPointerInLine(int line)
         {
@@ -41,23 +51,22 @@ namespace BoardGameApi
 
         public void PushPiece(int numOfPieces, int piece)
         {
-            int initPos = FirstEmptyCell();
             Cell[,] board;
 
             for (int i = 0; i < numOfPieces; i++)
             {
                 board =  this.board.GetBoard();
-                board[initPos + i, pointer].SetPiece(pieceFactory.MakePiece(piece));
+                board[PushCount(), pointer].SetPiece(pieceFactory.MakePiece(piece));
             }
         }
 
         private int FirstEmptyCell()
         {
             Cell[,] board = this.board.GetBoard();
-            int verticalSize = this.board.GetSize().horizontal;
+            int horizontalSize = this.board.GetSize().horizontal;
             int posFirstCellEmpty = 0;
 
-            for (int i = 0; i < verticalSize ; i++)
+            for (int i = 0; i < horizontalSize; i++)
             {
                 int color = board[i, pointer].GetPiece().GetColor();
                 if (IsCellEmpty(color))
@@ -91,6 +100,18 @@ namespace BoardGameApi
                     boardTable[h, v] = new Cell(new Position(h, v), pieceFactory.MakePiece(0));
                 }
             }
+        }
+
+        private int PushCount()
+        {
+            int pointer;
+
+            pointer = pushCount[this.pointer];
+
+            this.pushCount[this.pointer]++;
+
+            return pointer;
+
         }
 
 
