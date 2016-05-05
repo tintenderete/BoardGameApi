@@ -112,12 +112,12 @@ namespace BoardGameApi
             int sizeV = board.GetSize().vertical;
             int sizeH =  board.GetSize().horizontal;
 
-            if (position.vertical < 0 || position.vertical > sizeV)
+            if (position.vertical < 0 || position.vertical >= sizeV)
             {
                 return false;
             }
 
-            if (position.horizontal < 0 || position.horizontal > sizeH)
+            if (position.horizontal < 0 || position.horizontal >= sizeH)
             {
                 return false;
             }
