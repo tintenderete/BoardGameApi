@@ -131,7 +131,7 @@ namespace BoardGameApi
 
             Cell newCell;
 
-            newCell = board.GetCell(newPos.vertical, newPos.horizontal);
+            newCell = board.GetCell(newPos.horizontal, newPos.vertical);
 
             return newCell;
         }
