@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action.cs" />
     <Compile Include="Actor.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="BoardEditor.cs" />
@@ -51,10 +52,9 @@
     <Compile Include="Game.cs" />
     <Compile Include="IPieceFactory.cs" />
     <Compile Include="IStep.cs" />
-    <Compile Include="Movement.cs" />
     <Compile Include="NoPiece.cs" />
     <Compile Include="Piece.cs" />
-    <Compile Include="PiecesToMove.cs" />
+    <Compile Include="PiecesToMove_Standard.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
