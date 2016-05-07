@@ -23,6 +23,9 @@ namespace BoardGameApi
             size.horizontal = HorizontalSize;
             size.vertical = VerticalSize;
         }
+        public Board()
+        {
+        }
 
         public Cell[,] GetBoard()
         {
