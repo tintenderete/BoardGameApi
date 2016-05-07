@@ -13,6 +13,15 @@ namespace BoardGameApi
 
         static void Main(string[] args)
         {
+            PiecesToMove_Standard_Test piecesToMove = new PiecesToMove_Standard_Test();
+
+            if (piecesToMove.IsMovementsCorrect())
+            {
+                Console.WriteLine("Is movement correct success");
+            }
+
+            Console.WriteLine("Test finishes");
+            Console.ReadKey();
 
         }
         
