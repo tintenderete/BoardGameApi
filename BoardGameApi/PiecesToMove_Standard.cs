@@ -21,7 +21,7 @@ namespace BoardGameApi
         }
 
 
-        private void BasicMovementsAvailable()
+        public void BasicMovementsAvailable()
         {
             movements.Clear();
 
