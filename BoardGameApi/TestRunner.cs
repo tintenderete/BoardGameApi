@@ -15,7 +15,7 @@ namespace BoardGameApi
         private string txtInit = "Starts: ";
         private string txtFail = "F / ";
         private string txtSuccess = "S / ";
-        private string txtHadToBe = ". Had to be: ";
+        private string txtHadToBe = ". Has to be: ";
         private string txtButIs = ", But is: ";
 
         public void RunTest(bool funtionTOTest, string testName)
