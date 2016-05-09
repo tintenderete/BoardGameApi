@@ -24,19 +24,21 @@ namespace BoardGameApi
 
             if (!funtionTOTest)
             {
+                Console.WriteLine(" ");
                 Console.WriteLine(txtFail + testName);
                 
                 for (int i = 0; i < reports.Count; i++)
                 {
                     Console.WriteLine(this.reports[i]);
                 }
+                Console.WriteLine(" ");
             }
             else
             {
                 Console.WriteLine(txtSuccess + testName);
             }
 
-            Console.WriteLine(" ");
+            
             this.reports.Clear();
         }
 

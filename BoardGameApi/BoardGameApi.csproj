@@ -63,6 +63,7 @@
     <Compile Include="StandardBoardGame.cs" />
     <Compile Include="StandardPieceFactory.cs" />
     <Compile Include="TestRunner.cs" />
+    <Compile Include="Test_Board.cs" />
     <Compile Include="Test_BoardTableEditor.cs" />
     <Compile Include="TurnManager.cs" />
   </ItemGroup>
