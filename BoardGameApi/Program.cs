@@ -15,7 +15,10 @@ namespace BoardGameApi
         {
 
             Test_BoardTableEditor test_BoardTableEditor = new Test_BoardTableEditor();
-            Test_Board test_BoardEditor = new Test_Board(); 
+            Test_Board test_BoardEditor = new Test_Board();
+            Test_PiecesToMove test_PiecesToMove = new Test_PiecesToMove();
+
+
 
             Console.ReadKey();
         }
