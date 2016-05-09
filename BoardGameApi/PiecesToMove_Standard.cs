@@ -37,8 +37,13 @@ namespace BoardGameApi
                 if (board.IsPlayerPiece(cell, currentPlayer ))
                 {
                     newMove = new Action(cell, board.CellsInRange(cell, cell.GetPiece().GetBasicMovement()));
-                    newMove.NoPlayerCellsInDestiny(currentPlayer);
-                    movements.Add(newMove);
+
+                    if (newMove.destinyCells.Count != 0)
+                    {
+                        newMove.NoPlayerCellsInDestiny(currentPlayer);
+                        movements.Add(newMove);
+                    }
+                   
                 }
 
             }
