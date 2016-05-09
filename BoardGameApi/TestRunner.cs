@@ -10,26 +10,25 @@ namespace BoardGameApi
     class TestRunner
     {
         private string testName;
-        private List<string> reports;
+        private List<string> reports = new List<string>();
 
         private string txtInit = "Starts: ";
-        private string txtFail = "F/ ";
-        private string txtSuccess = "S/ ";
+        private string txtFail = "F / ";
+        private string txtSuccess = "S / ";
         private string txtHadToBe = ". Had to be: ";
         private string txtButIs = ", But is: ";
 
         public void RunTest(bool funtionTOTest, string testName)
         {
             this.testName = testName;
-            reports.Clear();
 
             if (!funtionTOTest)
             {
                 Console.WriteLine(txtFail + testName);
-
+                
                 for (int i = 0; i < reports.Count; i++)
                 {
-                    Console.WriteLine(reports[i]);
+                    Console.WriteLine(this.reports[i]);
                 }
             }
             else
@@ -38,12 +37,15 @@ namespace BoardGameApi
             }
 
             Console.WriteLine(" ");
+            this.reports.Clear();
         }
 
         public void Report<T>(string decription, T hadTobe, T butItIS )
         {
-            string report = "  - "+  decription + this.txtHadToBe + hadTobe + this.txtButIs + butItIS;
-            reports.Add(report);
+
+            string report = "  - "+  decription + this.txtHadToBe + hadTobe + this.txtButIs + butItIS ;
+            this.reports.Add(report);
+            
         }
 
 

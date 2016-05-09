@@ -13,16 +13,11 @@ namespace BoardGameApi
 
         static void Main(string[] args)
         {
-            PiecesToMove_Standard_Test piecesToMove = new PiecesToMove_Standard_Test();
 
-            if (piecesToMove.IsMovementsCorrect())
-            {
-                Console.WriteLine("Is movement correct success");
-            }
+            Test_BoardTableEditor test_BoardTableEditor = new Test_BoardTableEditor();
 
-            Console.WriteLine("Test finishes");
+
             Console.ReadKey();
-
         }
         
     }
