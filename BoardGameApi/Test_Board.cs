@@ -16,12 +16,12 @@ namespace BoardGameApi
             test = new TestRunner();
             boardFactory = new BoardGameFactory();
 
-            test.RunTest(BoardTest_A((int)BoardGameFactory.names.AllWhitePieces), "BoardTest_A whites");
-            test.RunTest(BoardTest_A((int)BoardGameFactory.names.AllBlackPieces), "BoardTest_A blacks");
-            test.RunTest(BoardTest_A((int)BoardGameFactory.names.AllNoPieces), "BoardTest_A noPieces");
+            test.RunTest(BoardTest_A((int)BoardGameFactory.names.AllWhitePieces), "BoardTest_A whites : all Gets works");
+            test.RunTest(BoardTest_A((int)BoardGameFactory.names.AllBlackPieces), "BoardTest_A blacks : all Gets works");
+            test.RunTest(BoardTest_A((int)BoardGameFactory.names.AllNoPieces), "BoardTest_A noPieces : all Gets works");
 
-            test.RunTest(BoardTest_B((int)BoardGameFactory.names.AllWhitePieces), "BoardTest_B whites");
-            test.RunTest(BoardTest_B((int)BoardGameFactory.names.AllBlackPieces), "BoardTest_B blacks");
+            test.RunTest(BoardTest_B((int)BoardGameFactory.names.AllWhitePieces), "BoardTest_B whites : cellInRange -  output.Length ");
+            test.RunTest(BoardTest_B((int)BoardGameFactory.names.AllBlackPieces), "BoardTest_B blacks : cellInRange - output.Length ");
 
             List<Position> nextCells17 = new List<Position>();
             nextCells17.Add(new Position(0, 7));
@@ -29,7 +29,7 @@ namespace BoardGameApi
             nextCells17.Add(new Position(1, 6));
             Cell cell17 = board.GetCell(1, 7);
 
-            test.RunTest(BoardTest_C(cell17, nextCells17), "BoardTest_C. Cell: 1 7");
+            test.RunTest(BoardTest_C(cell17, nextCells17), "BoardTest_C. Cell: 1 7 : cellInRange - cells position checked");
 
             List<Position> nextCells37 = new List<Position>();
             nextCells37.Add(new Position(2, 7));
@@ -37,14 +37,14 @@ namespace BoardGameApi
             nextCells37.Add(new Position(3, 6));
             Cell cell37 = board.GetCell(3, 7);
 
-            test.RunTest(BoardTest_C(cell37, nextCells37), "BoardTest_C. Cell: 3 7");
+            test.RunTest(BoardTest_C(cell37, nextCells37), "BoardTest_C. Cell: 3 7 : cellInRange - cells position checked");
 
             List<Position> nextCells77 = new List<Position>();
             nextCells77.Add(new Position(6, 7));
             nextCells77.Add(new Position(7, 6));
             Cell cell77 = board.GetCell(7, 7);
 
-            test.RunTest(BoardTest_C(cell77, nextCells77), "BoardTest_C. Cell: 7 7");
+            test.RunTest(BoardTest_C(cell77, nextCells77), "BoardTest_C. Cell: 7 7 : cellInRange - cells position checked");
 
             List<Position> nextCells35 = new List<Position>();
             nextCells35.Add(new Position(3, 6));
@@ -53,7 +53,7 @@ namespace BoardGameApi
             nextCells35.Add(new Position(4, 5));
             Cell cell35 = board.GetCell(3, 5);
 
-            test.RunTest(BoardTest_C(cell35, nextCells35), "BoardTest_C. Cell: 3 5");
+            test.RunTest(BoardTest_C(cell35, nextCells35), "BoardTest_C. Cell: 3 5 : cellInRange - cells position checked");
 
             List<Position> nextCells72 = new List<Position>();
             nextCells72.Add(new Position(7, 3));
@@ -61,14 +61,14 @@ namespace BoardGameApi
             nextCells72.Add(new Position(7, 1));
             Cell cell72 = board.GetCell(7, 2);
 
-            test.RunTest(BoardTest_C(cell72, nextCells72), "BoardTest_C. Cell: 7 2");
+            test.RunTest(BoardTest_C(cell72, nextCells72), "BoardTest_C. Cell: 7 2 : cellInRange - cells position checked");
 
             List<Position> nextCells10 = new List<Position>();
             nextCells10.Add(new Position(0, 0));
             nextCells10.Add(new Position(1, 1));
             Cell cell10 = board.GetCell(1, 0);
 
-            test.RunTest(BoardTest_C(cell10, nextCells10), "BoardTest_C. Cell: 1 0");
+            test.RunTest(BoardTest_C(cell10, nextCells10), "BoardTest_C. Cell: 1 0 : cellInRange - cells position checked");
 
             List<Position> nextCells03 = new List<Position>();
             nextCells03.Add(new Position(0, 4));
@@ -76,7 +76,30 @@ namespace BoardGameApi
             nextCells03.Add(new Position(0, 2));
             Cell cell03 = board.GetCell(0, 3);
 
-            test.RunTest(BoardTest_C(cell03, nextCells03), "BoardTest_C. Cell: 0 3");
+            test.RunTest(BoardTest_C(cell03, nextCells03), "BoardTest_C. Cell: 0 3 : cellInRange - cells position checked");
+
+            List<Position> nextCells00 = new List<Position>();
+            nextCells00.Add(new Position(1, 0));
+            nextCells00.Add(new Position(0, 1));
+            Cell cell00 = board.GetCell(0, 0);
+
+            test.RunTest(BoardTest_C(cell00, nextCells00), "BoardTest_C. Cell: 0 0 : cellInRange - cells position checked");
+
+            List<Position> nextCells01 = new List<Position>();
+            nextCells01.Add(new Position(0, 0));
+            nextCells01.Add(new Position(1, 1));
+            nextCells01.Add(new Position(0, 2));
+            Cell cell01 = board.GetCell(0, 1);
+
+            test.RunTest(BoardTest_C(cell01, nextCells01), "BoardTest_C. Cell: 0 1 : cellInRange - cells position checked");
+
+            List<Position> nextCells02 = new List<Position>();
+            nextCells02.Add(new Position(0, 3));
+            nextCells02.Add(new Position(1, 2));
+            nextCells02.Add(new Position(0, 1));
+            Cell cell02 = board.GetCell(0, 2);
+
+            test.RunTest(BoardTest_C(cell02, nextCells02), "BoardTest_C. Cell: 0 2 : cellInRange - cells position checked");
         }
 
         private bool BoardTest_A(int boardName)

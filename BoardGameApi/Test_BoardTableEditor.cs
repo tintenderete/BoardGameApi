@@ -14,11 +14,14 @@ namespace BoardGameApi
 
         public Test_BoardTableEditor()
         {
+            Console.WriteLine("Tests BoardTableEditor: ");
             test.RunTest(Test1_A(), " Test1_A");
             test.RunTest(Test1_B(), " Test1_B");
             test.RunTest(Test1_B(), " Test1_C");
             test.RunTest(Test1_D(), " Test1_D");
             test.RunTest(Test1_E(), " Test1_E");
+            test.RunTest(Test2_A(), " Test2_A : cell.boardPosition() tested");
+            Console.WriteLine("------------ ");
         }
 
 
@@ -258,6 +261,32 @@ namespace BoardGameApi
             }
 
             return testResult;
+        }
+
+        bool Test2_A()
+        {
+            bool result = true;
+
+            BoardGameFactory factory = new BoardGameFactory();
+            Board board = factory.MakeBoard((int)BoardGameFactory.names.AllWhitePieces);
+            Cell[,] boardTable = board.GetBoard();
+
+            for (int v = 0; v < board.GetSize().vertical; v++)
+            {
+                for (int h = 0; h < board.GetSize().horizontal; h++)
+                {
+                    Position pos = boardTable[h, v].GetBoardPosition();
+
+                    if (pos.horizontal != h && pos.vertical != v)
+                    {
+                        test.Report("BoardPositon of cell wrong", v + ", " +  h, pos.horizontal + ", "+ pos.vertical);
+
+                        result = false;
+                    }
+                }
+            }
+
+            return result;
         }
 
     }

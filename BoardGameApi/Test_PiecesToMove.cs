@@ -36,8 +36,7 @@ namespace BoardGameApi
                 test.Report("movements Lenght incorrect", 0, movements.Count);
                 result = false;
             }
-
-
+            
 
             return result; 
         }
@@ -96,7 +95,7 @@ namespace BoardGameApi
 
         public List<Action> movements;
 
-        public void PiecesToMove_Standard(Board board, Player currentPlayer)
+        void PiecesToMove_Standard(Board board, Player currentPlayer)
         {
             this.board = board;
             movements = new List<Action>();
@@ -117,15 +116,27 @@ namespace BoardGameApi
             {
                 pieceAux = cell.GetPiece();
 
+                
+
                 if (board.IsPlayerPiece(cell, currentPlayer))
                 {
                     newMove = new Action(cell, board.CellsInRange(cell, cell.GetPiece().GetBasicMovement()));
+
                     newMove.NoPlayerCellsInDestiny(currentPlayer);
-                    movements.Add(newMove);
+
+                    if (newMove.destinyCells.Count != 0)
+                    {
+                        movements.Add(newMove);
+                    }
                 }
 
             }
         }
+
+
+      
+
+
         /// END COPY From ORIGINAL
     }
 }
