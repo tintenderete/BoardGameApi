@@ -29,10 +29,10 @@ namespace BoardGameApi
 
             List<Cell> cellsToRemove = new List<Cell>();
 
-            for(int i = 0; i < destinyCells.Count; i++)
+            for (int i = 0; i < destinyCells.Count; i++)
             {
                 pieceColor = destinyCells[i].GetPiece().GetColor();
-                
+
                 if (pieceColor == playerColor)
                 {
                     cellsToRemove.Add(destinyCells[i]);
@@ -43,6 +43,6 @@ namespace BoardGameApi
             {
                 destinyCells.Remove(cellsToRemove[i]);
             }
-
+        }
     }
 }
