@@ -14,10 +14,10 @@ namespace BoardGameApi
         static void Main(string[] args)
         {
 
-            Test_BoardTableEditor test_BoardTableEditor = new Test_BoardTableEditor();
-            Test_Board test_BoardEditor = new Test_Board();
-            Test_PiecesToMove test_PiecesToMove = new Test_PiecesToMove();
-
+            //Test_BoardTableEditor test_BoardTableEditor = new Test_BoardTableEditor();
+            //Test_Board test_BoardEditor = new Test_Board();
+            //Test_PiecesToMove test_PiecesToMove = new Test_PiecesToMove();
+            Test_Action test_Action = new Test_Action();
 
 
             Console.ReadKey();
