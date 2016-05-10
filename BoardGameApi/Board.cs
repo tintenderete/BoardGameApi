@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace BoardGameApi
 {
-    class Board
+    public class Board
     {
-        protected Cell[,] boardTable = new Cell[1,1];
+        
         protected Position size = new Position(1,1);
+        protected Cell[,] boardTable = new Cell[1, 1];
 
         public Board(Board board)
         {
-            boardTable = board.GetBoard();
+            this.boardTable = board.GetBoard();
             size = board.GetSize();
         }
 
@@ -29,7 +30,7 @@ namespace BoardGameApi
 
         public Cell[,] GetBoard()
         {
-            return boardTable;
+            return this.boardTable;
         }
 
         public Cell GetCell(int boardPosH, int boardPosV)
