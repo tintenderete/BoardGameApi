@@ -36,51 +36,19 @@ namespace BoardGameApi
             test.RunTest(ActionTest1(destiny, playerB, 2), "ActionTest1_B");
         }
         
-        // Copy Original
-        public Cell originCell;
-        public List<Cell> destinyCells;
-
-        void Action(Cell currentCell, List<Cell> nextCells)
-        {
-            this.originCell = currentCell;
-            this.destinyCells = nextCells;
-        }
-
-        public void NoPlayerCellsInDestiny_Copy(Player player)
-        {
-            int playerColor = player.GetColor();
-            int pieceColor;
-            List<Cell> cellsToRemove = new List<Cell>();
-
-            for (int i = 0; i < destinyCells.Count; i++)
-            {
-                pieceColor = destinyCells[i].GetPiece().GetColor();
-
-                if (pieceColor == playerColor)
-                {
-                    cellsToRemove.Add(destinyCells[i]);
-                }
-            }
-
-            for (int i = 0; i < cellsToRemove.Count; i++)
-            {
-                destinyCells.Remove(cellsToRemove[i]);
-            }
-
-           }
-        // END copy original
 
         public bool ActionTest1(List<Cell> cellList, Player player, int lengthExpected)
         {
 
             bool result = true;
 
-            Action(new Cell(), cellList);
-            NoPlayerCellsInDestiny_Copy(player);
+            Action action = new Action(new Cell(), cellList);
 
-            if (destinyCells.Count != lengthExpected)
+            action.NoPlayerCellsInDestiny(player);
+
+            if (action.destinyCells.Count != lengthExpected)
             {
-                test.Report("Length wrong", lengthExpected, destinyCells.Count);
+                test.Report("Length wrong", lengthExpected, action.destinyCells.Count);
                 result = false;
             }
 
