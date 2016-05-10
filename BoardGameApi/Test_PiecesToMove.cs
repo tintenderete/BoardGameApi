@@ -13,8 +13,9 @@ namespace BoardGameApi
         public Test_PiecesToMove()
         {
             test.RunTest(Test_A(), "PiecesToMove_TestA");
-            //test.RunTest(Test_B(), "PiecesToMove_TestB");
-            //test.RunTest(Test_C(), "PiecesToMove_TestC");
+            test.RunTest(Test_B(), "PiecesToMove_TestB");
+            test.RunTest(Test_C(), "PiecesToMove_TestC");
+            test.RunTest(Test_D(), "PiecesToMove_TestD");
 
         }
 
@@ -80,10 +81,28 @@ namespace BoardGameApi
                 result = false;
             }
 
-            return false;
+            return result;
         }
 
+        bool Test_D()
+        {
+            bool result = true;
 
+            BoardGameFactory boardFactory = new BoardGameFactory();
+            Board board = boardFactory.MakeBoard((int)BoardGameFactory.names.Standard);
+            Player playerW = new Player((int)Player.colors.Black);
+
+            PiecesToMove_Standard(board, playerW);
+            BasicMovementsAvailable();
+
+            if (movements.Count != 3)
+            {
+                test.Report("movements Lenght incorrect", 3, movements.Count);
+                result = false;
+            }
+
+            return result;
+        }
 
 
 
