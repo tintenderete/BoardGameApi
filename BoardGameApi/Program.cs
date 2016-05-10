@@ -14,6 +14,7 @@ namespace BoardGameApi
         static void Main(string[] args)
         {
 
+            Console.ReadKey();
         }
         
     }

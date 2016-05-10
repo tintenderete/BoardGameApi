@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoardGameApi
 {
-    class Player
+    public class Player
     {
         public enum colors {NoPiece, White, Black};
 
