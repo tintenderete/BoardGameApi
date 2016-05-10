@@ -57,5 +57,10 @@ namespace BoardGameApi
         {
             return currentStep;
         }
+
+        public Game GetGame()
+        {
+            return game;
+        }
     }
 }
