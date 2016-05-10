@@ -27,16 +27,22 @@ namespace BoardGameApi
             int playerColor = player.GetColor();
             int pieceColor;
 
+            List<Cell> cellsToRemove = new List<Cell>();
+
             for(int i = 0; i < destinyCells.Count; i++)
             {
                 pieceColor = destinyCells[i].GetPiece().GetColor();
                 
                 if (pieceColor == playerColor)
                 {
-                    destinyCells.Remove(destinyCells[i]);
+                    cellsToRemove.Add(destinyCells[i]);
                 }
             }
-        }
+
+            for (int i = 0; i < cellsToRemove.Count; i++)
+            {
+                destinyCells.Remove(cellsToRemove[i]);
+            }
 
     }
 }
