@@ -22,6 +22,28 @@ namespace BoardGameApi
             this.destinyCells = nextCells;
         }
 
+        public bool IsCellInOrigin(Cell cell)
+        { 
+            if (originCell == cell)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool IsCellInDestiny(Cell cell)
+        {
+            foreach (Cell destinycell in destinyCells)
+            {
+                if (destinycell == cell)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
         public void NoPlayerCellsInDestiny(Player player)
         {
             int playerColor = player.GetColor();
