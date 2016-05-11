@@ -21,7 +21,7 @@ namespace BoardGameApi
             this.originCell = currentCell;
             this.destinyCells = nextCells;
         }
-
+        // PAra testear
         public bool IsCellInOrigin(Cell cell)
         { 
             if (originCell == cell)
