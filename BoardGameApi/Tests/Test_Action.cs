@@ -34,6 +34,24 @@ namespace BoardGameApi
             destiny.Add(new Cell(new Position(4, 0), new Piece(white, null)));
 
             test.RunTest(ActionTest1(destiny, playerB, 2), "ActionTest1_B");
+
+
+            Cell cellA = new Cell(new Position(1,1), new Piece(white,new List<Position>()));
+            Action action = new Action(cellA);
+
+            test.RunTest(ActionTest2(cellA, action), "ActionTest2_A");
+
+            Cell cellB = new Cell(new Position(4, 1), new Piece(black, new List<Position>()));
+
+            test.RunTest(!ActionTest2(cellB, action), "ActionTest2_B");
+
+
+            action.destinyCells.Add(cellA);
+            test.RunTest(ActionTest3(cellA, action), "ActionTest3_A");
+
+            test.RunTest(!ActionTest3(cellB, action), "ActionTest3_B");
+
+
         }
         
 
@@ -52,6 +70,33 @@ namespace BoardGameApi
                 result = false;
             }
 
+
+            return result;
+        }
+
+        public bool ActionTest2(Cell cell, Action action)
+        {
+            bool result = true;
+            
+            if (!action.IsCellInOrigin(cell))
+            {
+                test.Report("Cell no corret. id's = ",cell.GetId(), action.originCell.GetId() );
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool ActionTest3(Cell cell, Action action)
+        {
+            bool result = true;
+
+            if (!action.IsCellInDestiny(cell))
+            {
+                test.Report("Cell no corret. id's = ", cell.GetId(), action.originCell.GetId());
+                result = false;
+            }
+            
 
             return result;
         }

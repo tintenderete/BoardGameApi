@@ -14,6 +14,7 @@ namespace BoardGameApi
         public Action(Cell currentCell)
         {
             this.originCell = currentCell;
+            this.destinyCells = new List<Cell>();
         }
 
         public Action(Cell currentCell, List<Cell> nextCells)
@@ -21,7 +22,7 @@ namespace BoardGameApi
             this.originCell = currentCell;
             this.destinyCells = nextCells;
         }
-        // PAra testear
+        
         public bool IsCellInOrigin(Cell cell)
         { 
             if (originCell == cell)
