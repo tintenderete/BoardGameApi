@@ -3,19 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BoardGameApi;
 
 namespace BoardGameApi
 {
-    class Program
+    public interface IPieceFactory
     {
-
-
-        static void Main(string[] args)
-        {
-
-           
-        }
-        
+        Piece MakePiece(int pieceName);
     }
 }

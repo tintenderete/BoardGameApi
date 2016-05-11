@@ -16,5 +16,18 @@ namespace BoardGameApi
             this.horizontal = horizontal;
             this.vertical = vertical;
         }
+
+        public Position SumPos(Position pos)
+        {
+            Position newPosition;
+
+            newPosition = new Position(
+                    horizontal + pos.horizontal,
+                    vertical + pos.vertical
+                    );
+
+            return newPosition;
+        }
+
     }
 }

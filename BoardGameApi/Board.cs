@@ -6,30 +6,38 @@ using System.Threading.Tasks;
 
 namespace BoardGameApi
 {
-    class Board
+    public class Board
     {
-        protected Cell[,] board = new Cell[1,1];
+        
+        protected Position size = new Position(1,1);
+        protected Cell[,] boardTable = new Cell[1, 1];
 
-        public Board()
+        public Board(Board board)
         {
-
+            this.boardTable = board.GetBoard();
+            size = board.GetSize();
         }
 
-        public Board(Cell[,] board)
+        public Board(Cell[,] board, int HorizontalSize, int VerticalSize)
         {
-            this.board = board;
+            this.boardTable = board;
+            size.horizontal = HorizontalSize;
+            size.vertical = VerticalSize;
+        }
+        public Board()
+        {
         }
 
         public Cell[,] GetBoard()
         {
-            return board;
+            return this.boardTable;
         }
 
-        public Cell GetCell(int boardPosV, int boardPosH)
+        public Cell GetCell(int boardPosH, int boardPosV)
         {
             Cell cellToReturn;
 
-            cellToReturn = board[boardPosV, boardPosH];
+            cellToReturn = boardTable[boardPosH, boardPosV];
 
             return cellToReturn;   
         }
@@ -38,7 +46,7 @@ namespace BoardGameApi
         {
             int pieceId = piece.GetId();
             int pieceId_i;
-            foreach (Cell cell in board)
+            foreach (Cell cell in boardTable)
             {
                 pieceId_i = cell.GetPiece().GetId();
                 if (pieceId == pieceId_i)
@@ -50,12 +58,12 @@ namespace BoardGameApi
             return new Cell();
         }
 
-        public Piece GetPiece(int boardPosV, int boardPosH)
+        public Piece GetPiece(int boardPosH, int boardPosV)
         {
             Piece pieceToreturn;
             Cell cellContainer;
 
-            cellContainer = GetCell(boardPosV, boardPosH);
+            cellContainer = GetCell(boardPosH, boardPosV);
 
             pieceToreturn = cellContainer.GetPiece();
 
@@ -70,11 +78,16 @@ namespace BoardGameApi
 
             cellBoardPos = cell.GetBoardPosition();
 
-            cellContainer = GetCell(cellBoardPos.vertical, cellBoardPos.horizontal);
+            cellContainer = GetCell(cellBoardPos.horizontal, cellBoardPos.vertical);
 
             pieceToreturn = cellContainer.GetPiece();
 
             return pieceToreturn;
+        }
+
+        public Position GetSize()
+        {
+            return size;
         }
 
         public void MovePiece(Cell origin, Cell destiny)
@@ -83,5 +96,66 @@ namespace BoardGameApi
             origin.SetEmptyCell();
         }
 
+
+        public bool IsPosOnTheBoard(Position position)
+        {
+            int sizeV = size.vertical;
+            int sizeH = size.horizontal;
+
+            if (position.vertical < 0 || position.vertical >= sizeV)
+            {
+                return false;
+            }
+
+            if (position.horizontal < 0 || position.horizontal >= sizeH)
+            {
+                return false;
+            }
+
+
+            return true;
+        }
+
+        
+
+        public List<Cell> CellsInRange(Cell cell, List<Position> skillList)
+        {
+            List<Cell> nextCells = new List<Cell>();
+
+            Position piecePosition = cell.GetBoardPosition();
+            List<Position> pieceMovements = skillList;
+
+
+            Position nextPosition;
+            Cell nextCell;
+
+            foreach (Position skill in pieceMovements)
+            {
+                nextPosition = piecePosition.SumPos(skill);
+
+                if (IsPosOnTheBoard(nextPosition))
+                {
+                    nextCell = GetCell(nextPosition.horizontal, nextPosition.vertical);
+                    nextCells.Add(nextCell);
+                }
+            }
+
+            return nextCells;
+        }
+
+        public bool IsPlayerPiece(Cell cell, Player player)
+        {
+            int playerColor = player.GetColor();
+            int pieceColor = cell.GetPiece().GetColor();
+
+            if (playerColor == pieceColor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -43,14 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action.cs" />
     <Compile Include="Actor.cs" />
     <Compile Include="Board.cs" />
+    <Compile Include="BoardEditor.cs" />
+    <Compile Include="BoardGameFactory.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="IPieceFactory.cs" />
+    <Compile Include="IStep.cs" />
     <Compile Include="NoPiece.cs" />
     <Compile Include="Piece.cs" />
+    <Compile Include="PiecesToMove_Standard.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayerPlay_Standard.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardBoardGame.cs" />
+    <Compile Include="StandardPieceFactory.cs" />
+    <Compile Include="Timer.cs" />
+    <Compile Include="TurnManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

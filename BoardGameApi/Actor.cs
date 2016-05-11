@@ -12,6 +12,7 @@ namespace BoardGameApi
         public enum types { Cell, Piece };
         protected int type;
         private int id;
+        private int name;
 
         public static int GetCount() { return idCount; }
         public static void ResetCount() { idCount = 0; }
@@ -30,6 +31,14 @@ namespace BoardGameApi
         public int GetId()
         {
             return id;
+        }
+        public int GetName()
+        {
+            return name;
+        }
+        public void SetName(int newName)
+        {
+            name = newName;
         }
 
         

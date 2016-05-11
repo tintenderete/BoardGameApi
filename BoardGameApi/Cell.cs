@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoardGameApi
 {
-    class Cell: Actor
+    public class Cell: Actor
     {
 
         protected Position boardPosition;
