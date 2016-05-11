@@ -67,7 +67,7 @@ namespace BoardGameApi
             }
             
         }
-
+        /*
         public Cell TakeActorAsCell(Actor actor)
         {
             if (IsActorPiece(actor))
@@ -80,7 +80,7 @@ namespace BoardGameApi
             }
         }
 
-        
+        */
         
 
         
