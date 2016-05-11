@@ -13,8 +13,9 @@ namespace BoardGameApi
 
         static void Main(string[] args)
         {
-
+            TestFacade tests = new TestFacade();
            
+            
         }
         
     }
