@@ -27,13 +27,17 @@ namespace BoardGameApi
             this.board = new Board();
             this.turnManager = turnManager;
         }
-
+        
         public void UpdateStep(TurnManager turnManager)
         {
             RefreshPlayerInputs();
 
-            
+            nextMovement = DidPlayerDoAnyMovementAvailable();
 
+            if (nextMovement != null)
+            {
+                turnManager.NextStep();
+            }
 
 
         }
@@ -67,25 +71,145 @@ namespace BoardGameApi
             }
             
         }
-        /*
+        
         public Cell TakeActorAsCell(Actor actor)
         {
             if (IsActorPiece(actor))
             {
-                return turnManager.GetGame().GetBoard().GetCell((Piece)inputs[i]);
+                return turnManager.GetGame().GetBoard().GetCell((Piece)actor);
             }
             else
             {
-                return (Cell)inputs[i];
+                return (Cell)actor;
             }
         }
 
-        */
-        
+        public List<T> ClearListBut<T>(T obj, List<T> list)
+        {
+            T aux = obj;
 
-        
+            list = new List<T>();
 
-       
+            list.Add(aux);
+
+            return list;
+        }
+
+        public List<T> ClearList<T>(List<T> list)
+        {
+            list = new List<T>();
+
+            return list;
+        }
+
+        public bool IsCellInAnyOrigin(Cell cell, List<Action> actionList)
+        {
+            for (int i = 0; i < actionList.Count; i++)
+            {
+                if (cell == actionList[i].originCell)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
+        public Action FindActionByDestinyCell(Cell cell, List<Action> actionList)
+        {
+            for (int i = 0; i < actionList.Count; i++)
+            {
+                for (int j = 0; j < actionList[i].destinyCells.Count ; j++)
+                {
+                    if (actionList[i].destinyCells[j] == cell)
+                    {
+                        return actionList[i];
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public Action FindActionByOriginCell(Cell cell, List<Action> actionList)
+        {
+            for (int i = 0; i < actionList.Count; i++)
+            {
+                if (cell == actionList[i].originCell)
+                {
+                    return actionList[i];
+                }
+            }
+
+            return null;
+        }
+
+
+
+        public Action DidPlayerDoAnyMovementAvailable()
+        {
+            Cell destinyCell = null;
+
+            for (int i = inputs.Count - 1; i >= 0; i--)
+            {
+                Cell cell = TakeActorAsCell(inputs[i]);
+
+                if (destinyCell == null)
+                {
+                    if (board.IsPlayerPiece(cell, currentPlayer))
+                    {
+                        if (IsCellInAnyOrigin(cell, movementsAvailable))
+                        {
+                            inputs =  ClearListBut(cell, inputs);
+                            return null;
+                        }
+                        else
+                        {
+                            inputs = ClearList(inputs);
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        destinyCell = cell;
+                    }
+                }
+                else
+                {
+                    if (board.IsPlayerPiece(cell, currentPlayer))
+                    {
+                        if (IsCellInAnyOrigin(cell, movementsAvailable))
+                        {
+                            Action action = FindActionByOriginCell(cell, movementsAvailable);
+
+                            if (action.IsCellInDestiny(destinyCell))
+                            { 
+                                return action;
+                            }
+                            else
+                            {
+                                inputs = ClearListBut(cell, inputs);
+                                return null;
+                            }
+                        }
+                        else
+                        {
+                            inputs = ClearList(inputs);
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+
+            inputs = ClearList(inputs);
+            return null;
+        }
+
+
 
     }
 }
