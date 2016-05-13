@@ -44,7 +44,7 @@ namespace BoardGameApi
             }
 
             RefreshPlayerInputs();
-
+            
             this.nextMovement = DidPlayerDoAnyMovementAvailable();
             
             
