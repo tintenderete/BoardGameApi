@@ -16,11 +16,20 @@ namespace BoardGameApi
 
         public Player()
         {
+            if (inputs == null)
+            {
+                inputs = new List<Actor>();
+            }
 
         }
 
         public Player(int color)
         {
+            if (inputs == null)
+            {
+                inputs = new List<Actor>();
+            }
+
             this.color = color;
         }
 

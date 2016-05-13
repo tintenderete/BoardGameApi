@@ -8,7 +8,7 @@ namespace BoardGameApi
 {
     class Test_Action
     {
-        int noPiece = 0;
+        
         int white = 1;
         int black = 2;
         TestRunner test = new TestRunner();

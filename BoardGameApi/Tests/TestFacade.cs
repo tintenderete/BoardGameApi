@@ -20,6 +20,11 @@ namespace BoardGameApi
 
             Test_PiecesToMove test_PiecesToMove = new Test_PiecesToMove();
 
+            Test_PlayerPlay_Standard test_playerPlay_Standard = new Test_PlayerPlay_Standard();
+
+
+            Console.WriteLine("");
+            Console.WriteLine("tests FINISHED");
             Console.ReadKey();
 
         }

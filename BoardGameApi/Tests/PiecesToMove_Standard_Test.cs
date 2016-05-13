@@ -10,7 +10,6 @@ namespace BoardGameApi
     {
         Board board;
         Player playerW;
-        Player playerB;
         PiecesToMove_Standard piecesToMove;
 
         public PiecesToMove_Standard_Test()

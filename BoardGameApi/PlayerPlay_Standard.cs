@@ -23,18 +23,27 @@ namespace BoardGameApi
             this.movementsAvailable = new List<Action>();
             this.currentPlayer = new Player();
             this.inputs = new List<Actor>();
-            this.nextMovement = new Action(new Cell(), new List<Cell>());
             this.board = new Board();
             this.turnManager = turnManager;
         }
-        
+
+        public PlayerPlay_Standard()
+        {
+            this.timer = new Timer(30);
+            this.movementsAvailable = new List<Action>();
+            this.currentPlayer = new Player();
+            this.inputs = new List<Actor>();
+            this.board = new Board();   
+        }
+
         public void UpdateStep(TurnManager turnManager)
         {
             RefreshPlayerInputs();
 
-            nextMovement = DidPlayerDoAnyMovementAvailable();
-
-            if (nextMovement != null)
+            this.nextMovement = DidPlayerDoAnyMovementAvailable();
+            
+            
+            if (this.nextMovement != null)
             {
                 turnManager.NextStep();
             }
@@ -181,10 +190,12 @@ namespace BoardGameApi
                         if (IsCellInAnyOrigin(cell, movementsAvailable))
                         {
                             Action action = FindActionByOriginCell(cell, movementsAvailable);
-
+                            
                             if (action.IsCellInDestiny(destinyCell))
-                            { 
-                                return action;
+                            {
+                                currentPlayer.SetZeroInputs();
+                                inputs = ClearList(inputs);
+                                return action = new Action(cell, new List<Cell>() { destinyCell });
                             }
                             else
                             {
@@ -208,6 +219,9 @@ namespace BoardGameApi
             inputs = ClearList(inputs);
             return null;
         }
+
+
+
 
 
 

@@ -12,7 +12,6 @@ namespace BoardGameApi
         private string testName;
         private List<string> reports = new List<string>();
 
-        private string txtInit = "Starts: ";
         private string txtFail = "F / ";
         private string txtSuccess = "S / ";
         private string txtHadToBe = ". Has to be: ";
