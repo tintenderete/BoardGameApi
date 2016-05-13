@@ -38,6 +38,11 @@ namespace BoardGameApi
 
         public void UpdateStep(TurnManager turnManager)
         {
+            if (turnManager == null)
+            {
+                this.turnManager = turnManager;
+            }
+
             RefreshPlayerInputs();
 
             this.nextMovement = DidPlayerDoAnyMovementAvailable();
@@ -46,6 +51,13 @@ namespace BoardGameApi
             if (this.nextMovement != null)
             {
                 turnManager.NextStep();
+                return;
+            }
+
+            if (timer.TimeOff())
+            {
+                turnManager.NextStep();
+                timer.ResetTime();
             }
 
 
@@ -53,7 +65,7 @@ namespace BoardGameApi
 
         public void RefreshPlayerInputs()
         {
-            inputs = currentPlayer.GetInputs();
+            inputs = turnManager.GetGame().GetCurrentPlayer().GetInputs();
         }
 
         public bool IsActorCell(Actor actor)
