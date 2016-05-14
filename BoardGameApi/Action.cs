@@ -8,6 +8,49 @@ namespace BoardGameApi
 {
     class Action
     {
+
+        public static bool IsCellInAnyOrigin(Cell cell, List<Action> actionList)
+        {
+            for (int i = 0; i < actionList.Count; i++)
+            {
+                if (cell == actionList[i].originCell)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static Action FindActionByDestinyCell(Cell cell, List<Action> actionList)
+        {
+            for (int i = 0; i < actionList.Count; i++)
+            {
+                for (int j = 0; j < actionList[i].destinyCells.Count; j++)
+                {
+                    if (actionList[i].destinyCells[j] == cell)
+                    {
+                        return actionList[i];
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public static Action FindActionByOriginCell(Cell cell, List<Action> actionList)
+        {
+            for (int i = 0; i < actionList.Count; i++)
+            {
+                if (cell == actionList[i].originCell)
+                {
+                    return actionList[i];
+                }
+            }
+
+            return null;
+        }
+
         public Cell originCell;
         public List<Cell> destinyCells;
 
@@ -67,5 +110,9 @@ namespace BoardGameApi
                 destinyCells.Remove(cellsToRemove[i]);
             }
         }
+
+
+        
+
     }
 }

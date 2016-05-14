@@ -32,16 +32,48 @@ namespace BoardGameApi
         {
             return id;
         }
+
         public int GetName()
         {
             return name;
         }
+
         public void SetName(int newName)
         {
             name = newName;
         }
 
-        
+        public bool IsActorCell()
+        {
+            if (this.type == (int)Actor.types.Cell)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool IsActorPiece()
+        {
+            if (this.type == (int)Actor.types.Piece)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public Cell TakeActorAsCell(Board board)
+        {
+            if (IsActorPiece())
+            {
+                return board.GetCell((Piece)this);
+            }
+            else
+            {
+                return (Cell)this;
+            }
+        }
 
     }
     

@@ -71,6 +71,7 @@
     <Compile Include="Tests\Test_PiecesToMove.cs" />
     <Compile Include="Tests\Test_PlayerPlay_Standard.cs" />
     <Compile Include="Timer.cs" />
+    <Compile Include="Tools.cs" />
     <Compile Include="TurnManager.cs" />
   </ItemGroup>
   <ItemGroup>

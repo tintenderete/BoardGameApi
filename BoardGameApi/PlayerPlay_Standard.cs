@@ -67,35 +67,12 @@ namespace BoardGameApi
         {
             inputs = turnManager.GetGame().GetCurrentPlayer().GetInputs();
         }
-
-        public bool IsActorCell(Actor actor)
-        {
-            if (actor.Get_type() == (int)Actor.types.Cell)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool IsActorPiece(Actor actor)
-        {
-            if (actor.Get_type() == (int)Actor.types.Piece)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            
-        }
+        
+        
         
         public Cell TakeActorAsCell(Actor actor)
         {
-            if (IsActorPiece(actor))
+            if (actor.IsActorPiece())
             {
                 return turnManager.GetGame().GetBoard().GetCell((Piece)actor);
             }
@@ -104,68 +81,6 @@ namespace BoardGameApi
                 return (Cell)actor;
             }
         }
-
-        public List<T> ClearListBut<T>(T obj, List<T> list)
-        {
-            T aux = obj;
-
-            list = new List<T>();
-
-            list.Add(aux);
-
-            return list;
-        }
-
-        public List<T> ClearList<T>(List<T> list)
-        {
-            list = new List<T>();
-
-            return list;
-        }
-
-        public bool IsCellInAnyOrigin(Cell cell, List<Action> actionList)
-        {
-            for (int i = 0; i < actionList.Count; i++)
-            {
-                if (cell == actionList[i].originCell)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-        
-        public Action FindActionByDestinyCell(Cell cell, List<Action> actionList)
-        {
-            for (int i = 0; i < actionList.Count; i++)
-            {
-                for (int j = 0; j < actionList[i].destinyCells.Count ; j++)
-                {
-                    if (actionList[i].destinyCells[j] == cell)
-                    {
-                        return actionList[i];
-                    }
-                }
-            }
-
-            return null;
-        }
-
-        public Action FindActionByOriginCell(Cell cell, List<Action> actionList)
-        {
-            for (int i = 0; i < actionList.Count; i++)
-            {
-                if (cell == actionList[i].originCell)
-                {
-                    return actionList[i];
-                }
-            }
-
-            return null;
-        }
-
-
 
         public Action DidPlayerDoAnyMovementAvailable()
         {
@@ -179,14 +94,14 @@ namespace BoardGameApi
                 {
                     if (board.IsPlayerPiece(cell, currentPlayer))
                     {
-                        if (IsCellInAnyOrigin(cell, movementsAvailable))
+                        if (Action.IsCellInAnyOrigin(cell, movementsAvailable))
                         {
-                            inputs =  ClearListBut(cell, inputs);
+                            inputs =  Tools.ClearListBut(cell, inputs);
                             return null;
                         }
                         else
                         {
-                            inputs = ClearList(inputs);
+                            inputs = Tools.ClearList(inputs);
                             return null;
                         }
                     }
@@ -199,25 +114,25 @@ namespace BoardGameApi
                 {
                     if (board.IsPlayerPiece(cell, currentPlayer))
                     {
-                        if (IsCellInAnyOrigin(cell, movementsAvailable))
+                        if (Action.IsCellInAnyOrigin(cell, movementsAvailable))
                         {
-                            Action action = FindActionByOriginCell(cell, movementsAvailable);
+                            Action action = Action.FindActionByOriginCell(cell, movementsAvailable);
                             
                             if (action.IsCellInDestiny(destinyCell))
                             {
                                 currentPlayer.SetZeroInputs();
-                                inputs = ClearList(inputs);
+                                inputs = Tools.ClearList(inputs);
                                 return action = new Action(cell, new List<Cell>() { destinyCell });
                             }
                             else
                             {
-                                inputs = ClearListBut(cell, inputs);
+                                inputs = Tools.ClearListBut(cell, inputs);
                                 return null;
                             }
                         }
                         else
                         {
-                            inputs = ClearList(inputs);
+                            inputs = Tools.ClearList(inputs);
                             return null;
                         }
                     }
@@ -228,7 +143,7 @@ namespace BoardGameApi
                 }
             }
 
-            inputs = ClearList(inputs);
+            inputs = Tools.ClearList(inputs);
             return null;
         }
 
