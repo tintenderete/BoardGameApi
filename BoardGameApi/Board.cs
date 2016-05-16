@@ -14,18 +14,21 @@ namespace BoardGameApi
 
         public Board(Board board)
         {
+            Actor.ResetCount();
             this.boardTable = board.GetBoard();
             size = board.GetSize();
         }
 
         public Board(Cell[,] board, int HorizontalSize, int VerticalSize)
         {
+            Actor.ResetCount();
             this.boardTable = board;
             size.horizontal = HorizontalSize;
             size.vertical = VerticalSize;
         }
         public Board()
         {
+            Actor.ResetCount();
         }
 
         public Cell[,] GetBoard()

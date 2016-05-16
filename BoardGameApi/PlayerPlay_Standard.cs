@@ -9,11 +9,11 @@ namespace BoardGameApi
     class PlayerPlay_Standard: IStep
     {
         public Timer timer;
+        public Action nextMovement;
         public List<Action> movementsAvailable;
+
         public Player currentPlayer;
         public List<Actor> inputs;
-        public Action nextMovement;
-
         private Board board;
         private TurnManager turnManager;
 
@@ -23,69 +23,138 @@ namespace BoardGameApi
             this.movementsAvailable = new List<Action>();
             this.currentPlayer = new Player();
             this.inputs = new List<Actor>();
-            this.nextMovement = new Action(new Cell(), new List<Cell>());
             this.board = new Board();
             this.turnManager = turnManager;
         }
 
+        public PlayerPlay_Standard()
+        {
+            this.timer = new Timer(30);
+            this.movementsAvailable = new List<Action>();
+            this.currentPlayer = new Player();
+            this.inputs = new List<Actor>();
+            this.board = new Board();   
+        }
+
         public void UpdateStep(TurnManager turnManager)
         {
-            RefreshPlayerInputs();
+            if (turnManager == null)
+            {
+                this.turnManager = turnManager;
+            }
 
-            
-
-
-
-        }
-
-        public void RefreshPlayerInputs()
-        {
+            currentPlayer = turnManager.GetGame().GetCurrentPlayer();
             inputs = currentPlayer.GetInputs();
-        }
+            board = turnManager.GetGame().GetBoard();
 
-        public bool IsActorCell(Actor actor)
-        {
-            if (actor.Get_type() == (int)Actor.types.Cell)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool IsActorPiece(Actor actor)
-        {
-            if (actor.Get_type() == (int)Actor.types.Piece)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            this.nextMovement = DidPlayerDoAnyMovementAvailable();
             
+            
+            if (this.nextMovement != null)
+            {
+                currentPlayer.SetZeroInputs();
+
+                turnManager.GetGame().GetBoard().MovePiece(nextMovement.originCell, nextMovement.destinyCells[0]);
+
+                turnManager.NextStep();
+
+                return;
+            }
+
+            if (timer.TimeOff())
+            {
+                turnManager.NextStep();
+                timer.ResetTime();
+            }
+
+
         }
-        /*
+
+        
+        
+        
+        
         public Cell TakeActorAsCell(Actor actor)
         {
-            if (IsActorPiece(actor))
+            if (actor.IsActorPiece())
             {
-                return turnManager.GetGame().GetBoard().GetCell((Piece)inputs[i]);
+                return turnManager.GetGame().GetBoard().GetCell((Piece)actor);
             }
             else
             {
-                return (Cell)inputs[i];
+                return (Cell)actor;
             }
         }
 
-        */
-        
+        public Action DidPlayerDoAnyMovementAvailable()
+        {
+            Cell destinyCell = null;
 
-        
+            for (int i = inputs.Count - 1; i >= 0; i--)
+            {
+                Cell cell = TakeActorAsCell(inputs[i]);
 
-       
+                if (destinyCell == null)
+                {
+                    if (board.IsPlayerPiece(cell, currentPlayer))
+                    {
+                        if (Action.IsCellInAnyOrigin(cell, movementsAvailable))
+                        {
+                            inputs =  Tools.ClearListBut(cell, inputs);
+                            return null;
+                        }
+                        else
+                        {
+                            inputs = Tools.ClearList(inputs);
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        destinyCell = cell;
+                    }
+                }
+                else
+                {
+                    if (board.IsPlayerPiece(cell, currentPlayer))
+                    {
+                        if (Action.IsCellInAnyOrigin(cell, movementsAvailable))
+                        {
+                            Action action = Action.FindActionByOriginCell(cell, movementsAvailable);
+                            
+                            if (action.IsCellInDestiny(destinyCell))
+                            {
+                                currentPlayer.SetZeroInputs();
+                                inputs = Tools.ClearList(inputs);
+                                return action = new Action(cell, new List<Cell>() { destinyCell });
+                            }
+                            else
+                            {
+                                inputs = Tools.ClearListBut(cell, inputs);
+                                return null;
+                            }
+                        }
+                        else
+                        {
+                            inputs = Tools.ClearList(inputs);
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+
+            inputs = Tools.ClearList(inputs);
+            return null;
+        }
+
+
+
+
+
 
     }
 }

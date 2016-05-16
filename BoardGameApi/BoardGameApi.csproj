@@ -52,6 +52,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="IPieceFactory.cs" />
     <Compile Include="IStep.cs" />
+    <Compile Include="NoEnemyPieces.cs" />
     <Compile Include="NoPiece.cs" />
     <Compile Include="Piece.cs" />
     <Compile Include="PiecesToMove_Standard.cs" />
@@ -62,7 +63,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StandardBoardGame.cs" />
     <Compile Include="StandardPieceFactory.cs" />
+    <Compile Include="Tests\PiecesToMove_Standard_Test.cs" />
+    <Compile Include="Tests\TestFacade.cs" />
+    <Compile Include="Tests\TestRunner.cs" />
+    <Compile Include="Tests\Test_Action.cs" />
+    <Compile Include="Tests\Test_Board.cs" />
+    <Compile Include="Tests\Test_BoardTableEditor.cs" />
+    <Compile Include="Tests\Test_GameSimulation.cs" />
+    <Compile Include="Tests\Test_NoEnemyPieces.cs" />
+    <Compile Include="Tests\Test_PiecesToMove.cs" />
+    <Compile Include="Tests\Test_PlayerPlay_Standard.cs" />
     <Compile Include="Timer.cs" />
+    <Compile Include="Tools.cs" />
     <Compile Include="TurnManager.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,13 @@ namespace BoardGameApi
             game = newGame;
         }
 
+        public TurnManager()
+        {
+            this.currentStep = 0;
+            steps = new List<IStep>();
+            game = null;
+        }
+
         public void AddStep(IStep step)
         {
             steps.Add(step);
@@ -42,7 +49,7 @@ namespace BoardGameApi
         public void NextStep()
         {
             currentStep++;
-            if (currentStep > steps.Capacity)
+            if (currentStep >= steps.Count)
             {
                 currentStep = 0;
             }
@@ -61,6 +68,11 @@ namespace BoardGameApi
         public Game GetGame()
         {
             return game;
+        }
+
+        public void SetGame(Game game)
+        {
+             this.game = game ;
         }
     }
 }
