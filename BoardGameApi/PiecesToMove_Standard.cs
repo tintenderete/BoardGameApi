@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoardGameApi
 {
-    class PiecesToMove_Standard
+    class PiecesToMove_Standard: IStep
     {
         private Board board;
         private Player currentPlayer;
@@ -18,6 +18,31 @@ namespace BoardGameApi
             this.board = board;
             movements = new List<Action>();
             this.currentPlayer = currentPlayer;
+        }
+
+        public PiecesToMove_Standard()
+        {
+            movements = new List<Action>();
+        }
+
+
+        public void UpdateStep(TurnManager turnManager)
+        {
+            board = turnManager.GetGame().GetBoard();
+            currentPlayer = turnManager.GetGame().GetCurrentPlayer();
+
+            BasicMovementsAvailable();
+
+            int currentStep = turnManager.GetCurrentStep();
+            List<IStep> steps = turnManager.GetSteps();
+
+            PlayerPlay_Standard nextStep = (PlayerPlay_Standard)steps[currentStep + 1];
+
+            nextStep.movementsAvailable = movements;
+
+            turnManager.NextStep();
+            
+
         }
 
 

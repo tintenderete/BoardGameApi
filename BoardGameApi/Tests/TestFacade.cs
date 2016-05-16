@@ -22,6 +22,10 @@ namespace BoardGameApi
 
             Test_PlayerPlay_Standard test_playerPlay_Standard = new Test_PlayerPlay_Standard();
 
+            Test_NoEnemyPieces test_NoEnemyPieces = new Test_NoEnemyPieces();
+
+            Test_GameSimulation test_GameSimulation = new Test_GameSimulation();
+
 
             Console.WriteLine("");
             Console.WriteLine("tests FINISHED");

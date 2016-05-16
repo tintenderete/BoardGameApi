@@ -9,11 +9,11 @@ namespace BoardGameApi
     class PlayerPlay_Standard: IStep
     {
         public Timer timer;
+        public Action nextMovement;
         public List<Action> movementsAvailable;
+
         public Player currentPlayer;
         public List<Actor> inputs;
-        public Action nextMovement;
-
         private Board board;
         private TurnManager turnManager;
 
@@ -43,14 +43,21 @@ namespace BoardGameApi
                 this.turnManager = turnManager;
             }
 
-            RefreshPlayerInputs();
-            
+            currentPlayer = turnManager.GetGame().GetCurrentPlayer();
+            inputs = currentPlayer.GetInputs();
+            board = turnManager.GetGame().GetBoard();
+
             this.nextMovement = DidPlayerDoAnyMovementAvailable();
             
             
             if (this.nextMovement != null)
             {
+                currentPlayer.SetZeroInputs();
+
+                turnManager.GetGame().GetBoard().MovePiece(nextMovement.originCell, nextMovement.destinyCells[0]);
+
                 turnManager.NextStep();
+
                 return;
             }
 
@@ -63,10 +70,7 @@ namespace BoardGameApi
 
         }
 
-        public void RefreshPlayerInputs()
-        {
-            inputs = turnManager.GetGame().GetCurrentPlayer().GetInputs();
-        }
+        
         
         
         
