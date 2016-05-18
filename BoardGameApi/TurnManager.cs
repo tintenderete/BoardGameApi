@@ -74,5 +74,34 @@ namespace BoardGameApi
         {
              this.game = game ;
         }
+
+        public T FindTheNextStepLike<T>()
+        {
+            
+            for (int i = currentStep + 1; i < steps.Count; i ++)
+            {
+                if (steps[i] is T)
+                {
+                    return (T)steps[i];
+                }
+            }
+
+            return default(T); 
+        }
+
+        public T FindOneStepLike<T>()
+        {
+
+            for (int i = 0; i < steps.Count; i++)
+            {
+                if (steps[i] is T)
+                {
+                    return (T)steps[i];
+                }
+            }
+
+            return default(T);
+        }
+
     }
 }

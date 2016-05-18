@@ -33,10 +33,12 @@ namespace BoardGameApi
 
             BasicMovementsAvailable();
 
-            int currentStep = turnManager.GetCurrentStep();
-            List<IStep> steps = turnManager.GetSteps();
+            //int currentStep = turnManager.GetCurrentStep();
+            //List<IStep> steps = turnManager.GetSteps();
 
-            PlayerPlay_Standard nextStep = (PlayerPlay_Standard)steps[currentStep + 1];
+            //PlayerPlay_Standard nextStep = (PlayerPlay_Standard)steps[currentStep + 1];
+
+            PlayerPlay_Standard nextStep = turnManager.FindTheNextStepLike<PlayerPlay_Standard>();
 
             nextStep.movementsAvailable = movements;
 
@@ -73,6 +75,8 @@ namespace BoardGameApi
 
             }
         }
+
+        
 
        
 
