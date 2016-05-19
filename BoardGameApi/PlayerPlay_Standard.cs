@@ -27,6 +27,15 @@ namespace BoardGameApi
             this.turnManager = turnManager;
         }
 
+        public PlayerPlay_Standard(float turnTimeLimit)
+        {
+            this.timer = new Timer(turnTimeLimit);
+            this.movementsAvailable = new List<Action>();
+            this.currentPlayer = new Player();
+            this.inputs = new List<Actor>();
+            this.board = new Board();
+        }
+
         public PlayerPlay_Standard()
         {
             this.timer = new Timer(30);
@@ -36,13 +45,12 @@ namespace BoardGameApi
             this.board = new Board();   
         }
 
+
+
         public void UpdateStep(TurnManager turnManager)
         {
-            if (turnManager == null)
-            {
-                this.turnManager = turnManager;
-            }
-
+            this.turnManager = turnManager;
+            
             currentPlayer = turnManager.GetGame().GetCurrentPlayer();
             inputs = currentPlayer.GetInputs();
             board = turnManager.GetGame().GetBoard();
@@ -53,8 +61,6 @@ namespace BoardGameApi
             if (this.nextMovement != null)
             {
                 currentPlayer.SetZeroInputs();
-
-                turnManager.GetGame().GetBoard().MovePiece(nextMovement.originCell, nextMovement.destinyCells[0]);
 
                 turnManager.NextStep();
 
