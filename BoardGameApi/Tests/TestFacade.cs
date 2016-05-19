@@ -24,7 +24,7 @@ namespace BoardGameApi
 
             Test_NoEnemyPieces test_NoEnemyPieces = new Test_NoEnemyPieces();
 
-            Test_GameSimulation test_GameSimulation = new Test_GameSimulation();
+            
 
 
             Console.WriteLine("");

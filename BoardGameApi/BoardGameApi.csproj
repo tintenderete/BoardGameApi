@@ -69,7 +69,6 @@
     <Compile Include="Tests\Test_Action.cs" />
     <Compile Include="Tests\Test_Board.cs" />
     <Compile Include="Tests\Test_BoardTableEditor.cs" />
-    <Compile Include="Tests\Test_GameSimulation.cs" />
     <Compile Include="Tests\Test_NoEnemyPieces.cs" />
     <Compile Include="Tests\Test_PiecesToMove.cs" />
     <Compile Include="Tests\Test_PlayerPlay_Standard.cs" />
