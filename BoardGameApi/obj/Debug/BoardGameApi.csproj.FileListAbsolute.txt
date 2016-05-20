@@ -1,6 +1,0 @@
-C:\Users\Usuario\Desktop\BoardGameApi\BoardGameApi\bin\Debug\BoardGameApi.exe.config
-C:\Users\Usuario\Desktop\BoardGameApi\BoardGameApi\bin\Debug\BoardGameApi.exe
-C:\Users\Usuario\Desktop\BoardGameApi\BoardGameApi\bin\Debug\BoardGameApi.pdb
-C:\Users\Usuario\Desktop\BoardGameApi\BoardGameApi\obj\Debug\BoardGameApi.csprojResolveAssemblyReference.cache
-C:\Users\Usuario\Desktop\BoardGameApi\BoardGameApi\obj\Debug\BoardGameApi.exe
-C:\Users\Usuario\Desktop\BoardGameApi\BoardGameApi\obj\Debug\BoardGameApi.pdb
