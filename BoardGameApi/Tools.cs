@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-
+using BoardGameApi;
+namespace BoardGameApi
+{
     class Tools
     {
+		
         public static List<T> ClearListBut<T>(T obj, List<T> list)
         {
             T aux = obj;
@@ -26,3 +28,4 @@ using System.Threading.Tasks;
         }
     }
 
+}

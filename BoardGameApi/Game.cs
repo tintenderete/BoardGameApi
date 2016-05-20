@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BoardGameApi
 {
@@ -55,6 +55,16 @@ namespace BoardGameApi
             players[0] = new Player((int)Player.colors.White);
             players[1] = new Player((int)Player.colors.Black);
         }
+
+		public string GetCurrentPlayerName()
+		{
+			if (currentPlayer == 0) {
+				return "White Player";
+			} else 
+			{
+				return "Black Player";
+			}
+		}
 
     }
 }

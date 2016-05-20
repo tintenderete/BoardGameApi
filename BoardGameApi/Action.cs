@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BoardGameApi
 {
-    class Action
+    public class Action
     {
 
         public static bool IsCellInAnyOrigin(Cell cell, List<Action> actionList)

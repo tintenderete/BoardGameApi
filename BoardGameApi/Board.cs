@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BoardGameApi
 {
-    public class Board
+	public class Board
     {
         
         protected Position size = new Position(1,1);
@@ -58,7 +58,7 @@ namespace BoardGameApi
                 }
             }
            
-            return new Cell();
+			return new Cell();
         }
 
         public Piece GetPiece(int boardPosH, int boardPosV)
